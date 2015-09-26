@@ -127,7 +127,7 @@ inline void clockNoClock(){
 inline void read1Low(){
   PORTB = (0 << RS) | (0 << BT) | (1 << PHI2) | (0 << PHI1) | (0 << SH);
   //if (sdacCounter>>1)
-  sadc[sdacCounter] = analogRead(OS); //ADC is 10 bit, so keep 8 MSB
+  sadc[sdacCounter] = analogRead(OS)>>2; //ADC is 10 bit, so keep 8 MSB
   PORTB = (1 << RS) | (0 << BT) | (1 << PHI2) | (0 << PHI1) | (0 << SH);
   PORTB = (1 << RS) | (1 << BT) | (1 << PHI2) | (0 << PHI1) | (0 << SH);
   //PORTB = (0 << RS) | (1 << BT) | (1 << PHI2) | (0 << PHI1) | (0 << SH);
@@ -137,7 +137,7 @@ inline void read1Low(){
 
 inline void read1High(){
   PORTB = (0 << RS) | (0 << BT) | (0 << PHI2) | (1 << PHI1) | (0 << SH);
-  sadc[sdacCounter] = analogRead(OS); //ADC is 10 bit, so keep 8 MSB
+  sadc[sdacCounter] = analogRead(OS)>>2; //ADC is 10 bit, so keep 8 MSB
   PORTB = (1 << RS) | (0 << BT) | (0 << PHI2) | (1 << PHI1) | (0 << SH);
   PORTB = (1 << RS) | (1 << BT) | (0 << PHI2) | (1 << PHI1) | (0 << SH);
   //PORTB = (0 << RS) | (1 << BT) | (0 << PHI2) | (1 << PHI1) | (0 << SH);
