@@ -9,7 +9,8 @@ WiFiServer server(1234);
 
 void setup()
 {
-  Serial.begin(115200);
+  Serial.setRxBufferSize(1024);
+  Serial.begin(57600, SERIAL_8E1);
 
   if (DEBUG) Serial.println("START");
   
@@ -47,12 +48,12 @@ void loop(){
     
     while (client.connected()){
 
-      if ( client.available() )
+      while ( client.available() )
       {
         Serial.write( client.read() );
       }
     
-      if ( Serial.available() )
+      while ( Serial.available() )
       {
         client.write( Serial.read() );
       }
